@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, Touchable, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native'; // Fix the import statement
 import Background from './Background';
 import Btn from './Btn';
-import {darkGreen} from './Constants';
+import { darkGreen } from './Constants';
 import Field from './Field';
 
 const Signup = props => {
