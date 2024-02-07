@@ -5,7 +5,7 @@ Here's a concise explanation of the steps you need to taken to create New Projec
 
 1. **Project Initialization:**
    - Created a new Expo project named `AwesomeProject` using `npx create-expo-app`.
-   - Or clone the repository by **git clone https://github.com/username/repository.git**
+   - Or clone the repository by **git clone https://github.com/chiranjeevimn/Agri-APP.git**
 
 2. **Installing Dependencies:**
    - Installed project dependencies using `npm install`.
