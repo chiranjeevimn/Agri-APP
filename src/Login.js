@@ -39,11 +39,11 @@ const Login = (props) => {
             }}>
             Login to your account
           </Text>
-          <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}>
+          <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 28 }}>
             Email
           </Text>
           <Field placeholder="Email / Username" keyboardType={'email-address'} />
-          <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}>
+          <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 28 }}>
             Password
           </Text>
           <Field placeholder="Password" secureTextEntry={true} />
@@ -52,7 +52,7 @@ const Login = (props) => {
               alignItems: 'flex-end',
               width: '78%',
               paddingRight: 16,
-              marginBottom: 200,
+              marginBottom: 80,
             }}>
             <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}>
               Forgot Password ?
@@ -60,9 +60,9 @@ const Login = (props) => {
           </View>
           <Btn textColor='white' bgColor={darkGreen} btnLabel="Login" Press={() => alert("Logged In")} />
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "center" }}>
-            <Text style={{ fontSize: 16, fontWeight: "bold" }}>Don't have an account ? </Text>
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>Don't have an account ? </Text>
             <TouchableOpacity onPress={() => props.navigation.navigate("Signup")}>
-              <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}>Signup</Text>
+              <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 20 }}>Signup</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -1,29 +1,43 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native'; // Fix the import statement
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Background from './Background';
 import Btn from './Btn';
 import { darkGreen } from './Constants';
 import Field from './Field';
 
-const Signup = props => {
+const Signup = (props) => {
+  const [userName, setUserName] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [aadharNumber, setAadharNumber] = useState('');
+  const [password, setPassword] = useState('');
+
+  const clearFields = () => {
+    setUserName('');
+    setMobileNumber('');
+    setEmail('');
+    setAadharNumber('');
+    setPassword('');
+  };
+
   return (
     <Background>
-      <View style={{alignItems: 'center', width: 410}}>
+      <View style={{ alignItems: 'center', width: 410 }}>
         <Text
           style={{
             color: 'red',
             fontSize: 42,
             fontWeight: 'bold',
-            marginTop: 20,
+            marginTop: 80,
           }}>
           Register
         </Text>
         <Text
           style={{
             color: 'yellow',
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: 'bold',
-            marginBottom: 20,
+            marginBottom: 30,
           }}>
           Create a new account
         </Text>
@@ -33,41 +47,69 @@ const Signup = props => {
             height: 800,
             width: 460,
             borderTopLeftRadius: 130,
-            paddingTop: 10,
+            paddingTop: 20,
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>User Name</Text>
-          <Field placeholder="User Name" />
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>Mobile Number</Text>
-          <Field placeholder="Mobile Number" keyboardType={'number'} />
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>Email</Text>
+          <Text style={{ fontSize: 24, color: darkGreen, fontWeight: 'bold' }}>
+            User Name
+          </Text>
+          <Field
+            placeholder="User Name"
+            value={userName}
+            onChangeText={(text) => setUserName(text)}
+          />
+          <Text style={{ fontSize: 24, color: darkGreen, fontWeight: 'bold' }}>
+            Mobile Number
+          </Text>
+          <Field
+            placeholder="Mobile Number"
+            keyboardType={'numeric'}
+            value={mobileNumber}
+            onChangeText={(text) => setMobileNumber(text)}
+          />
+          <Text style={{ fontSize: 24, color: darkGreen, fontWeight: 'bold' }}>
+            Email
+          </Text>
           <Field
             placeholder="Email / Username"
             keyboardType={'email-address'}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
           />
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>Aadhar Number</Text>
-          <Field placeholder="Aadhar No" keyboardType={'number'} />
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>Wet land Acre</Text>
-          <Field placeholder="Aadhar No" keyboardType={'number'} />
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>Wet Land Survey No</Text>
-          <Field placeholder="Aadhar No" keyboardType={'number'} />
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>Dry land Acre</Text>
-          <Field placeholder="Aadhar No" keyboardType={'number'} />
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>Dry Land Survey No</Text>
-          <Field placeholder="Aadhar No" keyboardType={'number'} />
-          <Text style={{fontSize: 18, color: darkGreen, fontWeight: 'bold'}}>Password</Text>
-          <Field placeholder="Password" secureTextEntry={true} />
+          <Text style={{ fontSize: 24, color: darkGreen, fontWeight: 'bold' }}>
+            Aadhar Number
+          </Text>
+          <Field
+            placeholder="Aadhar No"
+            keyboardType={'numeric'}
+            value={aadharNumber}
+            onChangeText={(text) => setAadharNumber(text)}
+          />
+          <Text style={{ fontSize: 24, color: darkGreen, fontWeight: 'bold' }}>
+            Password
+          </Text>
+          <Field
+            placeholder="Password"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
           <View
             style={{
               display: 'flex',
               flexDirection: 'row',
               width: '78%',
-              paddingRight: 14
+              paddingRight: 18,
             }}>
-            <Text style={{color: 'grey', fontSize: 14}}>
+            <Text style={{ color: 'grey', fontSize: 18 }}>
               By signing in, you agree to our{' '}
             </Text>
-            <Text style={{color: darkGreen, fontWeight: 'bold', fontSize: 14}}>
+            <Text
+              style={{
+                color: darkGreen,
+                fontWeight: 'bold',
+                fontSize: 18,
+              }}>
               Terms & Conditions
             </Text>
           </View>
@@ -76,14 +118,17 @@ const Signup = props => {
             style={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent :"center",
+              justifyContent: 'center',
               width: '78%',
-              paddingRight: 14,
+              paddingRight: 18,
             }}>
-            <Text style={{color: 'grey', fontSize: 14}}>
-              and {" "}
-            </Text>
-            <Text style={{color: darkGreen, fontWeight: 'bold', fontSize: 14}}>
+            <Text style={{ color: 'grey', fontSize: 18 }}>and</Text>
+            <Text
+              style={{
+                color: darkGreen,
+                fontWeight: 'bold',
+                fontSize: 18,
+              }}>
               Privacy Policy
             </Text>
           </View>
@@ -93,6 +138,7 @@ const Signup = props => {
             btnLabel="Signup"
             Press={() => {
               alert('Account created');
+              clearFields(); // Clear the text fields after signup
               props.navigation.navigate('Login');
             }}
           />
@@ -102,13 +148,17 @@ const Signup = props => {
               flexDirection: 'row',
               justifyContent: 'center',
             }}>
-            <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
               Already have an account ?{' '}
             </Text>
             <TouchableOpacity
               onPress={() => props.navigation.navigate('Login')}>
               <Text
-                style={{color: darkGreen, fontWeight: 'bold', fontSize: 16}}>
+                style={{
+                  color: darkGreen,
+                  fontWeight: 'bold',
+                  fontSize: 20,
+                }}>
                 Login
               </Text>
             </TouchableOpacity>
