@@ -4,6 +4,7 @@ import Background from './Background';
 import Btn from './Btn';
 import { darkGreen } from './Constants';
 import Field from './Field';
+import { auth } from './firebase';
 
 const Login = (props) => {
   return (

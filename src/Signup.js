@@ -4,6 +4,7 @@ import Background from './Background';
 import Btn from './Btn';
 import { darkGreen } from './Constants';
 import Field from './Field';
+import { auth } from './firebase';
 
 const Signup = (props) => {
   const [userName, setUserName] = useState('');
@@ -11,6 +12,17 @@ const Signup = (props) => {
   const [email, setEmail] = useState('');
   const [aadharNumber, setAadharNumber] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSignUp = () => {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(userCredentials => {
+        const user = userCredentials.user;
+        console.log('Registered with:', user.email);
+      })
+      .catch(error => alert(error.message))
+  }
+
 
   const clearFields = () => {
     setUserName('');
@@ -137,7 +149,7 @@ const Signup = (props) => {
             bgColor={darkGreen}
             btnLabel="Signup"
             Press={() => {
-              alert('Account created');
+              alert(handleSignUp);
               clearFields(); // Clear the text fields after signup
               props.navigation.navigate('Login');
             }}
